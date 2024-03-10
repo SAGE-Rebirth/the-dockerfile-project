@@ -1,0 +1,20 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: <PASSWORD>
+      MYSQL_DATABASE: 
+      MYSQL_USER: 
+      MYSQL_PASSWORD: <PASSWORD>
+
+  spring-app:
+    image: your-application-image:latest
+    depends_on:
+      - mysql
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/your-database-name
+      SPRING_DATASOURCE_USERNAME: 
+      SPRING_DATASOURCE_PASSWORD: 
